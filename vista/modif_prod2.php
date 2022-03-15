@@ -18,7 +18,7 @@ $aux_inst = $_POST['inst_int'];
 $aux_area = $_POST['area_int'];
 $aux_tel = $_POST['tel_int'];
 $aux_mail = $_POST['mail_int'];
-print_r ($_POST);
+print_r($_POST);
 
 function ModificarProducto(
 	$aux_no,
@@ -37,10 +37,8 @@ function ModificarProducto(
 	$sentencia = "UPDATE miembrogi SET cedula_int='" . $aux_cedula . "', nombre_int= '" . $aux_nombre . "',
 		 apellido_int= '" . $aux_apellido . "', estatus_int= '" . $aux_estatus . "', grado_int= '" . $aux_grado . "',
 		 inst_int= '" . $aux_inst . "', area_int= '" . $aux_area . "', tel_int= '" . $aux_tel . "', mail_int='" . $aux_mail . "' WHERE no='" . $aux_no . "' ";
-	
-	mysqli_query($conexion, $sentencia) or die(mysqli_error($conexion));	
+
+	mysqli_query($conexion, $sentencia) or die(mysqli_error($conexion));
 }
 
 //echo '<script type="text/javascript"> alert("'.$sentencia.'"); window.location.href = "adm_mienbros.php";</script>';
-
-?>
