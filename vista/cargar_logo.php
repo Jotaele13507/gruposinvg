@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<?php include 'partials/head.php'; ?> <!-- Header -->
-<?php include 'partials/menu.php'; ?> <!-- Menú de la parte superior -->
+<?php include 'partials/head.php'; ?>
+<!-- Header -->
+<?php include 'partials/menu.php'; ?>
+<!-- Menú de la parte superior -->
 
 <!-- Validación de que existe un usuario en sesión -->
 <?php
@@ -10,6 +12,23 @@ if (isset($_SESSION["usuario"])) {
 	}
 } else {
 	header("location:login.php");
+}
+?>
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+
+<!-- Validación de que existe un grupo de investigación registrado -->
+<?php
+include "conexion.php"; //Conexión a la base de datos
+$id_usuario_grupo	= $_SESSION["usuario"]['id']; // Guardamos el id del usuario en sesión dentro de una variable
+$consulta_existe 	= "SELECT * FROM gruposinv where id_usuario = '" . $id_usuario_grupo . "'"; //Realizamos el query a la base de datos
+$resultado_consulta = mysqli_query($conexion, $consulta_existe); // Ejecuta el Query
+$number_of_rows		= mysqli_num_rows($resultado_consulta); // Guardamos el resultado de nuestra consulta en una variable
+
+if ($number_of_rows == 0) { // Comparamos el resultado de nuestra consulta.
+	include "scripts/error_no_grupo.php";
+} else {
 }
 ?>
 <!--===============================================================================================-->
@@ -39,8 +58,8 @@ if ($number_of_rows == 1) { // Comparamos el resultado de nuestra consulta.
 </head>
 
 <body>
-	  <br><br><br><br><br><br><br><br>
-		<div class="container-contact100" style="background-image: url('img/verde.jpg');">
+	<br><br><br><br><br><br><br><br>
+	<div class="container-contact100" style="background-image: url('img/verde.jpg');">
 		<div class="wrap-contact100">
 			<form action="subida_logo.php" method="POST" enctype="multipart/form-data">
 				<span class="contact100-form-title">

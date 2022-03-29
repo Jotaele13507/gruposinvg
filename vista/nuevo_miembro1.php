@@ -1,7 +1,10 @@
-<?php include('conn/nuevo_prod2.php') ?> <!-- Cargamos el action -->
+<?php include('conn/nuevo_prod2.php') ?>
+<!-- Cargamos el action -->
 <!DOCTYPE html>
-<?php include 'partials/head.php'; ?> <!-- Header -->
-<?php include 'partials/menu.php'; ?> <!-- Menú de la parte superior -->
+<?php include 'partials/head.php'; ?>
+<!-- Header -->
+<?php include 'partials/menu.php'; ?>
+<!-- Menú de la parte superior -->
 
 <!-- Validación de que existe un usuario en sesión -->
 <?php
@@ -11,10 +14,11 @@ if (isset($_SESSION["usuario"])) {
 	}
 } else {
 	header("location:login.php");
-}?>
+} ?>
 <!--===============================================================================================-->
 
 <html lang="en">
+
 <head>
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -27,7 +31,7 @@ if (isset($_SESSION["usuario"])) {
 	<div class="container-contact100" style="background-image: url('img/verde.jpg');">
 
 		<div class="wrap-contact100">
-	<br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br>
 			<form class="contact100-form validate-form" method="post" action="nuevo_miembro1.php">
 
 				<span class="contact100-form-title">
@@ -79,28 +83,6 @@ if (isset($_SESSION["usuario"])) {
 					<input class="input100" type="text" name="mail_int" value="<?php echo $mail_int; ?>">
 				</div>
 
-				<div class="wrap-input100 rs1-wrap-input100">
-					<span class="label-input100">Seleccione su grupo </span>
-					<select name='id_grupo'>
-	         <option disabled selected>Lista de grupos</option>
-					 <?php
-					         include "conexion.php";  // Using database connection file here
-					         $records = mysqli_query($conexion, "SELECT id_grupo, nombre_grupo From gruposinv");  // Use select query here
-
-					         while($data = mysqli_fetch_array($records))
-					         {
-					             echo "<option  value='". $data['id_grupo'] ."'>" .$data['nombre_grupo'] ."</option>";  // displaying data in option menu
-
-									 }
-
-					     ?>
-
-
-					   </select>
-
-
-				</div>
-
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
@@ -137,4 +119,5 @@ if (isset($_SESSION["usuario"])) {
 		gtag('config', 'UA-23581568-13');
 	</script>
 </body>
+
 </html>

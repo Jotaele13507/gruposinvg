@@ -1,7 +1,13 @@
-CREATE TABLE logogi (
-    id_logo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    id_usuariol INT NOT NULL,
-    dir_logo VARCHAR(100) NOT NULL,
+CREATE TABLE fotogrupo (
+    id_fotogrupo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_usuariof INT NOT NULL,
+    id_grupo INT NOT NULL
+    dir_foto VARCHAR(255) NOT NULL,
+
     
-    FOREIGN KEY fk_id_usuariol(id_usuariol) REFERENCES usuarios(id)
+    FOREIGN KEY fk_id_usuariof(id_usuariof) REFERENCES usuarios(id)
 );
+
+CREATE TABLE `g_inv`.`fotogrupo` ( `id_fotogrupo` INT NOT NULL AUTO_INCREMENT , 
+`id_usuariof` INT NOT NULL , `id_grupo` INT NOT NULL , `dir_logo` VARCHAR(255) NOT NULL , 
+PRIMARY KEY (`id_fotogrupo`)) ENGINE = InnoDB;

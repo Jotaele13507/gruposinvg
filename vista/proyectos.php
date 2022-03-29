@@ -13,6 +13,23 @@ if (isset($_SESSION["usuario"])) {
 }?>
 <!--===============================================================================================-->
 
+<!--===============================================================================================-->
+
+<!-- Validación de que existe un grupo de investigación registrado -->
+<?php
+include "conexion.php"; //Conexión a la base de datos
+$id_usuario_grupo	= $_SESSION["usuario"]['id']; // Guardamos el id del usuario en sesión dentro de una variable
+$consulta_existe 	= "SELECT * FROM gruposinv where id_usuario = '" . $id_usuario_grupo . "'"; //Realizamos el query a la base de datos
+$resultado_consulta = mysqli_query($conexion, $consulta_existe); // Ejecuta el Query
+$number_of_rows		= mysqli_num_rows($resultado_consulta); // Guardamos el resultado de nuestra consulta en una variable
+
+if ($number_of_rows == 0) { // Comparamos el resultado de nuestra consulta.
+	include "scripts/error_no_grupo.php";
+} else {
+}
+?>
+<!--===============================================================================================-->
+
 <html lang="en">
 <head>
 	<!--===============================================================================================-->
