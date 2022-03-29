@@ -61,7 +61,17 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                     <div class="hero-wrap js-fullheight" data-stellar-background-ratio="0.5">
                         <div class="js-fullheight d-flex justify-content-center align-items-center">
                             <div class="col-md-3 text text-center">
-                                <img class="img mb-4" src="img/grupo.jpg" alt="image" width="400" heigth="400">
+                                <!-- Consulta de Logo del grupo de investigación -->
+                                <?php
+                                include "conexion.php"; //Conexión a la base de datos
+                                $id_grupol     = intval($_GET['gid']); // Guardamos el id del usuario en sesión dentro de una variable
+                                $querylogo         = "SELECT dir_logo FROM logogi where id_grupo ='" . $id_grupol . "'"; //Realizamos el query a la base de datos
+                                // comienza un bucle que leerá todos los registros existentes
+                                $logo             = mysqli_query($conexion, $querylogo); // Ejecuta el Query
+                                while ($fil = mysqli_fetch_assoc($logo)) { // $fil es un array con todos los campos existentes en la tabla
+                                    $imagen = '<img class="img mb-4" src="' . $fil["dir_logo"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
+                                } ?>
+                                <?php echo $imagen ?>
                                 <!-- Desplegamos el logo -->
                             </div>
                         </div>
@@ -94,7 +104,7 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
 
                     <div class="wrap-input100 validate-input">
                         <span class="label-input100">Objetivos de Investigación</span>
-                        <input class="input100" name="obj_grupo" value="<?php echo $row['obj_grupo'] ?>" disabled>
+                        <textarea class="input100" name="obj_grupo" disabled><?php echo $row['obj_grupo'] ?></textarea>
                     </div>
 
                     <!--===============================================================================================-->
@@ -191,6 +201,28 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                             $resultado = null;
                             ?>
                         </table>
+                    </div>
+                    <span class="contact100-form-title">
+                        FOTO DE GRUPO
+                    </span>
+                    <div class="wrap-input100">
+
+                        <!-- Consulta de foto del grupo de investigación -->
+                        <?php
+                        include "conexion.php"; //Conexión a la base de datos
+                        $id_usuariof     = intval($_GET['gid']); // Guardamos el id del usuario en sesión dentro de una variable
+                        $queryfoto         = "SELECT dir_foto FROM fotogrupo where id_grupo ='" . $id_grupo . "'"; //Realizamos el query a la base de datos
+                        // comienza un bucle que leerá todos los registros existentes
+                        $foto             = mysqli_query($conexion, $queryfoto); // Ejecuta el Query
+                        while ($fil = mysqli_fetch_assoc($foto)) { // $fil es un array con todos los campos existentes en la tabla
+                            $fotogru = '<img class="img mb-4" src="' . $fil["dir_foto"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
+                        }
+                        if (empty($fotogru)) {
+                            echo "NO EXISTE FOTO DE GRUPO";
+                        } else {
+                        ?>
+                            <center><?php echo $fotogru  ?></center>
+                        <?php } ?>
                     </div>
                 </form>
             </div>

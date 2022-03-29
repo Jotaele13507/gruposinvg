@@ -108,7 +108,7 @@ while ($row = mysqli_fetch_array($result)) // $row es un array con todos los cam
 
 					<div class="wrap-input100 validate-input">
 						<span class="label-input100">Objetivos de Investigación</span>
-						<input class="input100" name="obj_grupo" value="<?php echo $row['obj_grupo'] ?>" disabled>
+						<textarea class="input100" name="obj_grupo" disabled><?php echo $row['obj_grupo'] ?></textarea>
 					</div>
 					<!--===============================================================================================-->
 					<span class="contact100-form-title">
@@ -203,8 +203,31 @@ while ($row = mysqli_fetch_array($result)) // $row es un array con todos los cam
 							?>
 						</table>
 					</div>
+					<span class="contact100-form-title">
+						FOTO DE GRUPO
+					</span>
+					<div class="wrap-input100">
+
+						<!-- Consulta de foto del grupo de investigación -->
+						<?php
+						include "conexion.php"; //Conexión a la base de datos
+						$id_usuariof 	= $_SESSION["usuario"]['id']; // Guardamos el id del usuario en sesión dentro de una variable
+						$queryfoto 		= "SELECT dir_foto FROM fotogrupo where id_usuariof ='" . $id_usuariof . "'"; //Realizamos el query a la base de datos
+						// comienza un bucle que leerá todos los registros existentes
+						$foto 			= mysqli_query($conexion, $queryfoto); // Ejecuta el Query
+						while ($fil = mysqli_fetch_assoc($foto)) { // $fil es un array con todos los campos existentes en la tabla
+							$fotogru = '<img class="img mb-4" src="' . $fil["dir_foto"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
+						}
+						if (empty($fotogru)) {
+							echo "NO EXISTE FOTO DE GRUPO";
+						} else {
+						?>
+							<center><?php echo $fotogru  ?></center>
+						<?php } ?>
+					</div>
 				</form>
 			</div>
+		</div>
 		</div>
 		</form>
 		</div>
