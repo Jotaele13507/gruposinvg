@@ -6,9 +6,6 @@
 <?php $gid = intval($_GET['gid']);
 //echo $gid;
 ?>
-
-
-
 <!-- Consulta de Logo del grupo de investigación -->
 <?php
 include "conexion.php"; //Conexión a la base de datos
@@ -20,7 +17,6 @@ while ($fil = mysqli_fetch_assoc($logo)) { // $fil es un array con todos los cam
     $imagen = '<img class="img mb-4" src="' . $fil["dir_logo"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
 } ?>
 <!--===============================================================================================-->
-
 <!-- Consulta de información del grupo de investigación -->
 <?php
 include "conexion.php"; //Conexión a la base de datos
@@ -38,9 +34,6 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
     <html lang="en">
 
     <head>
-
-
-
         <!--===============================================================================================-->
         <link rel="icon" href="images/icons/favicon.ico">
         <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -70,8 +63,11 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                                 $logo             = mysqli_query($conexion, $querylogo); // Ejecuta el Query
                                 while ($fil = mysqli_fetch_assoc($logo)) { // $fil es un array con todos los campos existentes en la tabla
                                     $imagen = '<img class="img mb-4" src="' . $fil["dir_logo"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
-                                } ?>
-                                <?php echo $imagen ?>
+                                }
+                                if (empty($imagen)) { ?>
+                                    <img class="img mb-4" src="img/logogrupo.png" alt="" width="300" heigth="400">
+                                <?php } else { ?> <center><?php echo $imagen  ?></center>
+                                <?php } ?>
                                 <!-- Desplegamos el logo -->
                             </div>
                         </div>
@@ -114,7 +110,6 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                     <div class="wrap-input100">
                         <table style=" width: 1000px; border-collapse: separate ; border-spacing: 25px 10px;">
                             <thead>
-                                <th>Cédula</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Estatus</th>
@@ -134,9 +129,6 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                             //$resultado = mysqli_query($conexion, $sentencia); // Ejecuta el Query
                             while ($filas = mysqli_fetch_assoc($ret)) { // $filas es un array con todos los campos existentes en la tabla
                                 echo "<tr>";
-                                echo "<td>";
-                                echo $filas['cedula_int'];
-                                echo "</td>";
                                 echo "<td>";
                                 echo $filas['nombre_int'];
                                 echo "</td>";
@@ -167,7 +159,6 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                             <!--===============================================================================================-->
                         </table>
                     </div>
-
                     <span class="contact100-form-title">
                         PROYECTOS DE INVESTIGACIÓN EN EJECUCIÓN
                     </span>
@@ -217,10 +208,9 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                         while ($fil = mysqli_fetch_assoc($foto)) { // $fil es un array con todos los campos existentes en la tabla
                             $fotogru = '<img class="img mb-4" src="' . $fil["dir_foto"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
                         }
-                        if (empty($fotogru)) {
-                            echo "NO EXISTE FOTO DE GRUPO";
-                        } else {
-                        ?>
+                        if (empty($fotogru)) { ?>
+                            <center><img class="img mb-4" src="img/fotogrupo.jpg" alt="" width="300" heigth="400"></center>
+                        <?php } else { ?>
                             <center><?php echo $fotogru  ?></center>
                         <?php } ?>
                     </div>

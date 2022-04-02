@@ -39,6 +39,7 @@ if ($checarSiImagen != false) {
                 }
                 $query = "INSERT INTO fotogrupo (id_usuariof,id_grupo,dir_foto) 
 					  VALUES('$id_usuariof','$id_grupo','$archivo')";
+                $quero = mysqli_query($db, "update gruposinv set dir_fotogrupo='$archivo' where id_usuario='$id_usuariof'");
                 mysqli_query($db, $query);
 
                 //El archivo se subió correctamente;

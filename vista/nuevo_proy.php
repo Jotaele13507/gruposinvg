@@ -1,7 +1,10 @@
-<?php include('conn/nuevo_proy2.php') ?> <!-- Cargamos el action -->
+<?php include('conn/nuevo_proy2.php') ?>
+<!-- Cargamos el action -->
 <!DOCTYPE html>
-<?php include 'partials/head.php'; ?> <!-- Header -->
-<?php include 'partials/menu.php'; ?> <!-- Menú de la parte superior -->
+<?php include 'partials/head.php'; ?>
+<!-- Header -->
+<?php include 'partials/menu.php'; ?>
+<!-- Menú de la parte superior -->
 
 <!-- Validación de que existe un usuario en sesión -->
 <?php
@@ -11,10 +14,11 @@ if (isset($_SESSION["usuario"])) {
 	}
 } else {
 	header("location:login.php");
-}?>
+} ?>
 <!--===============================================================================================-->
 
 <html lang="en">
+
 <head>
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -42,22 +46,25 @@ if (isset($_SESSION["usuario"])) {
 					<textarea class="input100" name="obj_inv" required></textarea>
 				</div>
 
-       <!--checkbox-->
-			 <br><span>Seleccione el estado de la investigación:</span>
-			   <label><input type="radio" value="Reciente" name="estado"/> ¿Esta investigación es la más reciente?</label>
-			 <br>
-			   <label><input type="radio" value="En curso" name="estado"/> ¿Investigación en curso?</label><br>
-			 </div><br>
-				<div class="container-contact100-form-btn">
-					<div class="wrap-contact100-form-btn">
-						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn" type="submit" class="btn" name="reg_proy">
-							REGISTRAR PROYECTO
-						</button>
-					</div>
-				</div>
-			</form>
+				<!--checkbox-->
+				<br><span>Seleccione el estado de la investigación:</span>
+				<label><input type="radio" value="Reciente" name="estado" /> ¿Esta investigación es la más reciente?</label>
+				<br>
+				<label><input type="radio" value="En curso" name="estado" /> Investigación en curso</label>
+				<br>
+				<label><input type="radio" value="Finalizada" name="estado" /> Investigación Finalizada</label>
+				<br>
+		</div><br>
+		<div class="container-contact100-form-btn">
+			<div class="wrap-contact100-form-btn">
+				<div class="contact100-form-bgbtn"></div>
+				<button class="contact100-form-btn" type="submit" class="btn" name="reg_proy">
+					REGISTRAR PROYECTO
+				</button>
+			</div>
 		</div>
+		</form>
+	</div>
 	</div>
 
 	<div id="dropDownSelect1"></div>

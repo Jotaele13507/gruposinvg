@@ -5,7 +5,7 @@ session_start();
 
 $id_usuariol = "";
 
-$directorio = "img_guardadas/";
+$directorio = "logo_grupos/";
 
 $archivo = $directorio . basename($_FILES["file"]["name"]);
 
@@ -40,6 +40,7 @@ if ($checarSiImagen != false) {
                 $query = "INSERT INTO logogi (id_usuariol,id_grupo,dir_logo) 
 					  VALUES('$id_usuariol','$id_grupo','$archivo')";
                 mysqli_query($db, $query);
+                $quero = mysqli_query($db, "update gruposinv set dir_logo='$archivo' where id_usuario='$id_usuariol'");
 
                 //El archivo se subió correctamente;
                 include "scripts/subido_exitosamente.php";

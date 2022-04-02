@@ -117,7 +117,6 @@ while ($row = mysqli_fetch_array($result)) // $row es un array con todos los cam
 					<div class="wrap-input100">
 						<table style=" width: 1000px; border-collapse: separate ; border-spacing: 25px 10px;">
 							<thead>
-								<th>Cédula</th>
 								<th>Nombre</th>
 								<th>Apellido</th>
 								<th>Estatus</th>
@@ -136,9 +135,6 @@ while ($row = mysqli_fetch_array($result)) // $row es un array con todos los cam
 							$resultado = mysqli_query($conexion, $sentencia); // Ejecuta el Query
 							while ($filas = mysqli_fetch_assoc($resultado)) { // $filas es un array con todos los campos existentes en la tabla
 								echo "<tr>";
-								echo "<td>";
-								echo $filas['cedula_int'];
-								echo "</td>";
 								echo "<td>";
 								echo $filas['nombre_int'];
 								echo "</td>";

@@ -35,15 +35,17 @@ try {
 
 <body>
   <br><br><br><br><br><br><br><br><br><br>
-  <center>
-    <h4>
-      <FONT COLOR="black">Lista de Proyectos
-    </h4>
-  </center>
+  <div class="product-info text-left">
+    <center>
+      <h3 class="name">Lista de Proyectos</h3>
+    </center>
+  </div><!-- /.product-info -->
   <div class="container">
     <table id="example" class="display" style="width:100%">
       <thead>
         <tr>
+          <th>Unidad Académica </td>
+          <th>Nombre del Grupo </td>
           <th>Nombre del Coordinador </td>
           <th>Correo </td>
           <th>N. de la Investigación </td>
@@ -55,14 +57,18 @@ try {
 
 
       $query = "SELECT Us.id, Us.nombre, Us.email, 
-                     Pro.tit_inv, Pro.estado
+                     Pro.tit_inv, Pro.estado, 
+                     Gru.nombre_grupo, Gru.unidad_acad
                 FROM usuarios Us
-                INNER JOIN proyegi Pro ON Us.id = Pro.id_usuariot"; //Cambiar el nombre de usuario por nombre del coordinador
+                INNER JOIN proyegi Pro ON Us.id = Pro.id_usuariot
+                INNER JOIN gruposinv Gru ON Us.id = Gru.id_usuario"; //Cambiar el nombre de usuario por nombre del coordinador
 
       $consulta = $conexion->query($query);
       while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
         echo '
                 <tr>
+                <td>' . $fila['unidad_acad'] . '</td>
+                <td>' . $fila['nombre_grupo'] . '</td>
                 <td>' . $fila['nombre'] . '</td>
                 <td>' . $fila['email'] . '</td>
                 <td>' . $fila['tit_inv'] . '</td>

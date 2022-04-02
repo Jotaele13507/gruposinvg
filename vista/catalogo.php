@@ -23,40 +23,36 @@
 
 <body>
   <br><br><br><br><br><br><br><br>
-
-  <center>
-    <h4>
-      <FONT COLOR="black">
-        Catálogo De Grupos Registrados en la Plataforma
-    </h4>
-  </center>
+  <div class="product-info text-left">
+    <center>
+      <h3 class="name">Catálogo De Grupos Registrados en la Plataforma</h3>
+    </center>
+  </div><!-- /.product-info -->
 
   <div class="container">
-
-
     <div class="row">
       <?php
       include 'conexion.php';
       $ret = mysqli_query($conexion, "select * from gruposinv");
       $num = mysqli_num_rows($ret);
       if ($num > 0) {
-        while ($row = mysqli_fetch_array($ret)) { ?>
+        while ($row = mysqli_fetch_assoc($ret)) {
+          $logogru = $row['dir_logo'] ?>
           <div class="col-sm-4 col-md-4 ">
             <div class="products">
               <div class="product">
                 <div class="product-image">
                   <div class="image">
-                    <img class="img mb-4" src="img/grupo.jpg" alt="image" width="400" heigth="400">
+                    <?php if (empty($logogru)) { ?>
+                      <img class="img mb-4" src="img/logogrupo.png" alt="" width="300" heigth="400">
+                    <?php } else { ?>
+                      <img class="img mb-4" src="<?php echo ($row['dir_logo']) ?>" alt="" width="300" heigth="400">
+                    <?php } ?>
                   </div><!-- /.image -->
                 </div><!-- /.product-image -->
-
-
                 <div class="product-info text-left">
-                  <h3 class="name"><a><?php echo htmlentities($row['nombre_grupo']); ?></a></h3>
-
+                  <h4 class="name"><?php echo htmlentities($row['nombre_grupo']); ?></h4>
                   <div class="description"></div>
-
-
                 </div><!-- /.product-info -->
                 <div class="cart clearfix animate-effect">
                   <div class="action">
@@ -65,8 +61,6 @@
                         <a href="catalogoview.php?gid=<?php echo htmlentities($row['id_grupo']); ?>">
                           <button class="btn btn-primary" type="button">Ver</button></a>
                       </li>
-
-
                     </ul>
                   </div><!-- /.action -->
                 </div><!-- /.cart -->
@@ -92,7 +86,7 @@
 
   <script>
     $(document).ready(function() {
-      $('#example').DataTable();
+      $(' #example').DataTable();
     });
   </script>
   </script>

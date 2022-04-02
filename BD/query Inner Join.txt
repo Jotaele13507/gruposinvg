@@ -1,0 +1,6 @@
+ $query = "SELECT Us.id, Us.nombre, Us.email, 
+                     Pro.tit_inv, Pro.estado, 
+                     Gru.nombre_grupo
+                FROM usuarios Us
+                INNER JOIN proyegi Pro ON Us.id = Pro.id_usuariot
+                INNER JOIN gruposinv Gru ON Us.id = Gru.id_usuario"

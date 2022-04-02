@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-03-2022 a las 01:40:19
+-- Tiempo de generación: 01-04-2022 a las 22:29:46
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 SET
@@ -20,6 +20,28 @@ SET
   --
   -- --------------------------------------------------------
   --
+  -- Estructura de tabla para la tabla `fotogrupo`
+  --
+  CREATE TABLE `fotogrupo` (
+    `id_fotogrupo` int(11) NOT NULL,
+    `id_usuariof` int(11) NOT NULL,
+    `id_grupo` int(11) NOT NULL,
+    `dir_foto` varchar(255) NOT NULL
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+--
+  -- Volcado de datos para la tabla `fotogrupo`
+  --
+INSERT INTO
+  `fotogrupo` (
+    `id_fotogrupo`,
+    `id_usuariof`,
+    `id_grupo`,
+    `dir_foto`
+  )
+VALUES
+  (1, 49, 17, 'foto_grupos/grupo.jpg');
+-- --------------------------------------------------------
+  --
   -- Estructura de tabla para la tabla `gruposinv`
   --
   CREATE TABLE `gruposinv` (
@@ -29,7 +51,9 @@ SET
     `nombre_grupo` varchar(50) NOT NULL,
     `acronimo` varchar(50) NOT NULL,
     `fecha_creacion` varchar(50) NOT NULL,
-    `obj_grupo` varchar(1500) NOT NULL
+    `obj_grupo` longtext NOT NULL,
+    `dir_logo` varchar(255) DEFAULT NULL,
+    `dir_fotogrupo` varchar(255) DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 --
   -- Volcado de datos para la tabla `gruposinv`
@@ -42,11 +66,23 @@ INSERT INTO
     `nombre_grupo`,
     `acronimo`,
     `fecha_creacion`,
-    `obj_grupo`
+    `obj_grupo`,
+    `dir_logo`,
+    `dir_fotogrupo`
   )
 VALUES
-  (4, 11, 'Medicina', 'Opac', 'a', 'a', 'a'),
-  (5, 13, 'Faeco', 'CEU', 'b', 'b', 'b'),
+  (
+    4,
+    11,
+    'Medicina',
+    'Opac',
+    'a',
+    'a',
+    'a',
+    NULL,
+    NULL
+  ),
+  (5, 13, 'Faeco', 'CEU', 'b', 'b', 'b', NULL, NULL),
   (
     6,
     15,
@@ -54,7 +90,9 @@ VALUES
     'Fiec',
     'LQS',
     '2021',
-    'Dormir'
+    'Dormir',
+    NULL,
+    NULL
   ),
   (
     7,
@@ -63,7 +101,9 @@ VALUES
     'OTRI',
     'Otri',
     '2021',
-    'Nada'
+    'Nada',
+    NULL,
+    NULL
   ),
   (
     8,
@@ -72,7 +112,9 @@ VALUES
     'Dark',
     'll',
     '2021',
-    'aprender más'
+    'aprender más',
+    NULL,
+    NULL
   ),
   (
     9,
@@ -81,7 +123,9 @@ VALUES
     'MED',
     'ide',
     '2019',
-    'khk'
+    'khk',
+    NULL,
+    NULL
   ),
   (
     10,
@@ -90,7 +134,9 @@ VALUES
     'CAPAC',
     'ide',
     '2019',
-    'Obtener una revista cientÃ­fica'
+    'Obtener una revista cientÃ­fica',
+    NULL,
+    NULL
   ),
   (
     11,
@@ -99,7 +145,9 @@ VALUES
     'fsdfdsf',
     'sdfds',
     '2022',
-    'sdfhsdjfkhsdjfldsf'
+    'sdfhsdjfkhsdjfldsf',
+    NULL,
+    NULL
   ),
   (
     12,
@@ -108,7 +156,9 @@ VALUES
     'Arte y Diseño',
     'AD',
     '2022',
-    'Lorem Ipsun'
+    'Lorem Ipsun',
+    NULL,
+    NULL
   ),
   (
     13,
@@ -117,7 +167,9 @@ VALUES
     'UP CIENTIFICA',
     'UPC',
     '2021',
-    'Objetivo'
+    'Objetivo',
+    NULL,
+    NULL
   ),
   (
     14,
@@ -126,7 +178,9 @@ VALUES
     'SDFDSF',
     'SDFDS',
     '2222',
-    'FSDFSDFSFSF'
+    'FSDFSDFSFSF',
+    NULL,
+    NULL
   ),
   (
     15,
@@ -135,7 +189,9 @@ VALUES
     'sdfdsf',
     'fsfs',
     '2223',
-    'sdfsdfsfdsfs'
+    'sdfsdfsfdsfs',
+    NULL,
+    NULL
   ),
   (
     16,
@@ -144,7 +200,20 @@ VALUES
     'Grupo 1',
     'G1',
     '2022',
-    'Pasar el año'
+    'Pasar el año',
+    NULL,
+    NULL
+  ),
+  (
+    17,
+    49,
+    'Centro Regional Universitario de Colón',
+    'Sistemas Logísticos y Análisis Empresarial',
+    'SisLAE ',
+    '2021',
+    'Analizar sistemas logísticos y empresariales mediante el análisis avanzado de datos, estadística multivariante y modelos de pronósticos con el propósito de diseñar sistemas de negocios más eficientes.',
+    NULL,
+    NULL
   );
 -- --------------------------------------------------------
   --
@@ -181,41 +250,53 @@ VALUES
   CREATE TABLE `logogi` (
     `id_logo` int(11) NOT NULL,
     `id_usuariol` int(11) NOT NULL,
+    `id_grupo` int(11) DEFAULT NULL,
     `dir_logo` varchar(100) NOT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 --
   -- Volcado de datos para la tabla `logogi`
   --
 INSERT INTO
-  `logogi` (`id_logo`, `id_usuariol`, `dir_logo`)
+  `logogi` (`id_logo`, `id_usuariol`, `id_grupo`, `dir_logo`)
 VALUES
-  (1, 11, 'logo_grupos/Beca.jpg'),
+  (1, 11, 0, 'logo_grupos/Beca.jpg'),
   (
     3,
     13,
+    0,
     'logo_grupos/1243px-Harley_davidson_logo.jpg'
   ),
   (
     4,
     15,
+    0,
     'logo_grupos/WhatsApp Image 2021-02-02 at 4.16.02 PM.jpeg'
   ),
-  (6, 17, 'logo_grupos/FB_IMG_1599150833140.jpg'),
+  (6, 17, 0, 'logo_grupos/FB_IMG_1599150833140.jpg'),
   (
     7,
     16,
+    0,
     'logo_grupos/WhatsApp Image 2021-04-05 at 10.00.27 PM.jpeg'
   ),
-  (10, 12, 'logo_grupos/MAPA_PROCESOS.jpg'),
+  (10, 12, 0, 'logo_grupos/MAPA_PROCESOS.jpg'),
   (
     11,
     63,
+    0,
     'logo_grupos/WhatsApp Image 2022-02-28 at 5.06.08 PM.jpeg'
   ),
   (
     12,
     64,
+    0,
     'logo_grupos/WhatsApp Image 2022-02-28 at 5.06.08 PM.jpeg'
+  ),
+  (
+    13,
+    49,
+    17,
+    'logo_grupos/Logo SisLAE color_001.png'
   );
 -- --------------------------------------------------------
   --
@@ -550,10 +631,10 @@ VALUES
   --
   CREATE TABLE `usuarios` (
     `id` int(11) NOT NULL,
-    `nombre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+    `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
     `cedula` varchar(40) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-    `usuario` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-    `email` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+    `usuario` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+    `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
     `password` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
     `privilegio` int(2) NOT NULL,
     `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp()
@@ -750,7 +831,7 @@ VALUES
     '3-112-34',
     'carlos.gomezr@up.ac.pa',
     'Carlos0990',
-    2,
+    1,
     '2021-10-14 23:57:21'
   ),
   (
@@ -902,11 +983,30 @@ VALUES
     '123.abc.',
     1,
     '2022-03-11 15:10:16'
+  ),
+  (
+    69,
+    'Estelina Ortega Jalil de Gómez',
+    'estelina.ortega@up.ac.pa',
+    'estelinaortega',
+    '3-120-34',
+    '123.abc.',
+    2,
+    '2022-03-28 14:43:30'
   );
 --
   -- Índices para tablas volcadas
   --
   --
+  -- Indices de la tabla `fotogrupo`
+  --
+ALTER TABLE
+  `fotogrupo`
+ADD
+  PRIMARY KEY (`id_fotogrupo`),
+ADD
+  KEY `fk_id_usuariof` (`id_usuariof`);
+--
   -- Indices de la tabla `gruposinv`
   --
 ALTER TABLE
@@ -962,13 +1062,21 @@ ADD
   -- AUTO_INCREMENT de las tablas volcadas
   --
   --
+  -- AUTO_INCREMENT de la tabla `fotogrupo`
+  --
+ALTER TABLE
+  `fotogrupo`
+MODIFY
+  `id_fotogrupo` int(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 2;
+--
   -- AUTO_INCREMENT de la tabla `gruposinv`
   --
 ALTER TABLE
   `gruposinv`
 MODIFY
   `id_grupo` int(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 17;
+  AUTO_INCREMENT = 18;
 --
   -- AUTO_INCREMENT de la tabla `invg`
   --
@@ -984,7 +1092,7 @@ ALTER TABLE
   `logogi`
 MODIFY
   `id_logo` int(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 13;
+  AUTO_INCREMENT = 15;
 --
   -- AUTO_INCREMENT de la tabla `miembroginv`
   --
@@ -1008,11 +1116,18 @@ ALTER TABLE
   `usuarios`
 MODIFY
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 65;
+  AUTO_INCREMENT = 70;
 --
   -- Restricciones para tablas volcadas
   --
   --
+  -- Filtros para la tabla `fotogrupo`
+  --
+ALTER TABLE
+  `fotogrupo`
+ADD
+  CONSTRAINT `fk_id_usuariof` FOREIGN KEY (`id_usuariof`) REFERENCES `usuarios` (`id`);
+--
   -- Filtros para la tabla `gruposinv`
   --
 ALTER TABLE
