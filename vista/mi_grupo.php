@@ -75,7 +75,10 @@ while ($row = mysqli_fetch_array($result)) // $row es un array con todos los cam
 					<div class="hero-wrap js-fullheight" data-stellar-background-ratio="0.5">
 						<div class="js-fullheight d-flex justify-content-center align-items-center">
 							<div class="col-md-3 text text-center">
-								<?php echo $imagen ?>
+								<?php if (empty($imagen)) { ?>
+									<img class="img mb-4" src="img/logogrupo.png" alt="" width="300" heigth="400">
+								<?php } else { ?> <center><?php echo $imagen  ?></center>
+								<?php } ?>
 								<!-- Desplegamos el logo -->
 							</div>
 						</div>
@@ -214,10 +217,9 @@ while ($row = mysqli_fetch_array($result)) // $row es un array con todos los cam
 						while ($fil = mysqli_fetch_assoc($foto)) { // $fil es un array con todos los campos existentes en la tabla
 							$fotogru = '<img class="img mb-4" src="' . $fil["dir_foto"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
 						}
-						if (empty($fotogru)) {
-							echo "NO EXISTE FOTO DE GRUPO";
-						} else {
-						?>
+						if (empty($fotogru)) { ?>
+							<center><img class="img mb-4" src="img/fotogrupo.jpg" alt="" width="300" heigth="400"></center>
+						<?php } else { ?>
 							<center><?php echo $fotogru  ?></center>
 						<?php } ?>
 					</div>
