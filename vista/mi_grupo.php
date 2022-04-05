@@ -32,12 +32,13 @@ if ($number_of_rows == 0) { // Comparamos el resultado de nuestra consulta.
 <!-- Consulta de Logo del grupo de investigación -->
 <?php
 include "conexion.php"; //Conexión a la base de datos
-$id_usuariol 	= $_SESSION["usuario"]['id']; // Guardamos el id del usuario en sesión dentro de una variable
-$querylogo 		= "SELECT dir_logo FROM logogi where id_usuariol ='" . $id_usuariol . "'"; //Realizamos el query a la base de datos
+$id_usuariol 	= $_SESSION["usuario"]['id'];
+echo $id_usuariol; // Guardamos el id del usuario en sesión dentro de una variable
+$querylogo 		= "SELECT * FROM logogi where id_usuariol ='" . $id_usuariol . "'"; //Realizamos el query a la base de datos
 // comienza un bucle que leerá todos los registros existentes
 $logo 			= mysqli_query($conexion, $querylogo); // Ejecuta el Query
-while ($fil = mysqli_fetch_assoc($logo)) { // $fil es un array con todos los campos existentes en la tabla
-	$imagen = '<img class="img mb-4" src="' . $fil["dir_logo"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
+while ($fil = mysqli_fetch_array($logo)) { // $fil es un array con todos los campos existentes en la tabla
+	$imagen = '<img class="img mb-4" src="logo_grupos/' . $fil["id_grupo"] . '/' . $fil["dir_logo"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
 } ?>
 <!--===============================================================================================-->
 
@@ -211,11 +212,11 @@ while ($row = mysqli_fetch_array($result)) // $row es un array con todos los cam
 						<?php
 						include "conexion.php"; //Conexión a la base de datos
 						$id_usuariof 	= $_SESSION["usuario"]['id']; // Guardamos el id del usuario en sesión dentro de una variable
-						$queryfoto 		= "SELECT dir_foto FROM fotogrupo where id_usuariof ='" . $id_usuariof . "'"; //Realizamos el query a la base de datos
+						$queryfoto 		= "SELECT * FROM fotogrupo where id_usuariof ='" . $id_usuariof . "'"; //Realizamos el query a la base de datos
 						// comienza un bucle que leerá todos los registros existentes
 						$foto 			= mysqli_query($conexion, $queryfoto); // Ejecuta el Query
 						while ($fil = mysqli_fetch_assoc($foto)) { // $fil es un array con todos los campos existentes en la tabla
-							$fotogru = '<img class="img mb-4" src="' . $fil["dir_foto"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
+							$fotogru = '<img class="img mb-4" src="foto_grupos/' . $fil["id_grupo"] . '/' . $fil["dir_foto"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
 						}
 						if (empty($fotogru)) { ?>
 							<center><img class="img mb-4" src="img/fotogrupo.jpg" alt="" width="300" heigth="400"></center>

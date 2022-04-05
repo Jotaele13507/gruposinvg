@@ -29,6 +29,6 @@
 			
 			mysqli_query($db, $query); // realizamos el query para que se conecte a la base de datos, e ingrese la información 
 			//echo " se guardo";
-			header('location: adm_mienbros.php');
+			header('location: adm_miembros.php');
 		}
 ?>

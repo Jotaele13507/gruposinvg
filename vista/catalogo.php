@@ -44,9 +44,9 @@
                 <div class="product-image">
                   <div class="image">
                     <?php if (empty($logogru)) { ?>
-                      <img class="img mb-4" src="img/logogrupo.png" alt="" width="300" heigth="400">
+                      <img class="img mb-4" src="img/logogrupo.png" alt="" width="300" heigth="200">
                     <?php } else { ?>
-                      <img class="img mb-4" src="<?php echo ($row['dir_logo']) ?>" alt="" width="200" heigth="200">
+                      <img class="img mb-4" src="logo_grupos/<?php echo ($row['id_grupo']) ?>/<?php echo ($row['dir_logo']) ?>" alt="" width="300" heigth="200">
                     <?php } ?>
                   </div><!-- /.image -->
                 </div><!-- /.product-image -->

@@ -28,7 +28,7 @@
         <strong class="font-bold"><?php if ($_SESSION["usuario"]["privilegio"] == 1) { ?></strong>
         <!-- <li><a href="index.php">Inicio</a></li> -->
         <li><a href="mi_grupo.php"><br><br>Mi Grupo</a></li>
-        <li><a href="adm_mienbros.php"><br><br>Adm. Miembros</a></li>
+        <li><a href="adm_miembros.php"><br><br>Adm. Miembros</a></li>
         <li><a href="admin.php"><br><br>Coordinador</a></li>
         <li><a href="catalogo.php"><br><br>Catálogo</a></li>
         <li><a href="consulta_proyecto.php"><br><br>Consulta de proyecto</a></li>

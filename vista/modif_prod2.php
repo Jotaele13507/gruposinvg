@@ -41,4 +41,4 @@ function ModificarProducto(
 	mysqli_query($conexion, $sentencia) or die(mysqli_error($conexion));
 }
 
-//echo '<script type="text/javascript"> alert("'.$sentencia.'"); window.location.href = "adm_mienbros.php";</script>';
+//echo '<script type="text/javascript"> alert("'.$sentencia.'"); window.location.href = "adm_miembros.php";</script>';

@@ -61,7 +61,7 @@ if ($number_of_rows == 1) { // Comparamos el resultado de nuestra consulta.
     <br><br><br><br><br><br><br><br>
     <div class="container-contact100" style="background-image: url('img/verde.jpg');">
         <div class="wrap-contact100">
-            <form action="subida_fotogrupo.php" method="POST" enctype="multipart/form-data">
+            <form action="subir_fgn.php" method="POST" enctype="multipart/form-data">
                 <span class="contact100-form-title">
                     <center>SUBIR FOTO DE GRUPO
                 </span>

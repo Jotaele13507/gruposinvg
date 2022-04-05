@@ -44,5 +44,5 @@ if (isset($_POST['reg_miembro'])) {
 					  VALUES('$id_usuario','$id_grupo','$cedula_int','$nombre_int','$apellido_int','$estatus_int','$grado_int','$inst_int','$area_int','$tel_int','$mail_int')";
 	mysqli_query($db, $query); // realizamos el query para que se conecte a la base de datos, e ingrese la información
 	//echo " se guardo";
-	header('location: adm_mienbros.php');
+	header('location: adm_miembros.php');
 }

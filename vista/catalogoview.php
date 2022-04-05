@@ -62,7 +62,7 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                                 // comienza un bucle que leerá todos los registros existentes
                                 $logo             = mysqli_query($conexion, $querylogo); // Ejecuta el Query
                                 while ($fil = mysqli_fetch_assoc($logo)) { // $fil es un array con todos los campos existentes en la tabla
-                                    $imagen = '<img class="img mb-4" src="' . $fil["dir_logo"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
+                                    $imagen = '<img class="img mb-4" src="logo_grupos/' . $id_grupol . '/' . $fil["dir_logo"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
                                 }
                                 if (empty($imagen)) { ?>
                                     <img class="img mb-4" src="img/logogrupo.png" alt="" width="300" heigth="400">
@@ -201,12 +201,12 @@ while ($row = mysqli_fetch_array($ret)) // $row es un array con todos los campos
                         <!-- Consulta de foto del grupo de investigación -->
                         <?php
                         include "conexion.php"; //Conexión a la base de datos
-                        $id_usuariof     = intval($_GET['gid']); // Guardamos el id del usuario en sesión dentro de una variable
+                        $id_grupof     = intval($_GET['gid']); // Guardamos el id del usuario en sesión dentro de una variable
                         $queryfoto         = "SELECT dir_foto FROM fotogrupo where id_grupo ='" . $id_grupo . "'"; //Realizamos el query a la base de datos
                         // comienza un bucle que leerá todos los registros existentes
                         $foto             = mysqli_query($conexion, $queryfoto); // Ejecuta el Query
                         while ($fil = mysqli_fetch_assoc($foto)) { // $fil es un array con todos los campos existentes en la tabla
-                            $fotogru = '<img class="img mb-4" src="' . $fil["dir_foto"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
+                            $fotogru = '<img class="img mb-4" src="foto_grupos/' . $id_grupof . '/' . $fil["dir_foto"] .  '" alt="image"  width="400" heigth="400" >'; // Guardamos la dirección del logo dentro de una variable
                         }
                         if (empty($fotogru)) { ?>
                             <center><img class="img mb-4" src="img/fotogrupo.jpg" alt="" width="300" heigth="400"></center>

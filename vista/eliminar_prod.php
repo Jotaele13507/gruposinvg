@@ -33,5 +33,5 @@ function EliminarProducto($aux, $conexion)
 
 <script type="text/javascript">
 	alert("Mienbro Eliminado exitosamente");
-	window.location.href = 'adm_mienbros.php';
+	window.location.href = 'adm_miembros.php';
 </script>

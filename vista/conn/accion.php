@@ -44,7 +44,7 @@ if (!$resultado) {
 
 //cerrar conexion
 mysqli_close($db);
-header('location: ../adm_mienbros.php');
+header('location: ../adm_miembros.php');
 ?>
 
 

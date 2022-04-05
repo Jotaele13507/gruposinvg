@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 
 	//Query para insertar
 	$sql = mysqli_query($conexion, "INSERT INTO gruposinv(id_usuario,unidad_acad,nombre_grupo,acronimo,fecha_creacion,obj_grupo) VALUES ('$id_usuario','$unidad_acad','$nombre_grupo','$acronimo','$fecha_creacion','$obj_grupo')");
-	header('location: adm_mienbros.php');
+	header('location: adm_miembros.php');
 }
 ?>
 

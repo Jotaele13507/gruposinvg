@@ -6,7 +6,7 @@
 <?php
 if (isset($_SESSION["usuario"])) {
     if ($_SESSION["usuario"]["privilegio"] == 2) {
-        header("location:adm_mienbros.php");
+        header("location:adm_miembros.php");
     }
 } else {
     header("location:login.php");
