@@ -34,11 +34,11 @@ if ($checarSiImagen != false) {
         //echo "El archivo tiene que ser menor a 1.5 mb";
     } else {
         //validar tipo de imagen
-        if ($tipoArchivo == "jpg" || $tipoArchivo == "jpeg" || $tipoArchivo == "png") {
+        if ($tipoArchivo == "jpg" || $tipoArchivo == "jpeg") {
             //Se validó que la extensión del archivo sean jpg, jepg y png.
             if (move_uploaded_file($_FILES["file"]["tmp_name"], "logo_grupos/$id_grupo/" . $_FILES["file"]["name"])) {
                 $query = "INSERT INTO logogi (id_usuariol,id_grupo,dir_logo) VALUES('$id_usuariol','$id_grupo','$logogrupo')";
-                $quero = mysqli_query($conexion, "update gruposinv set dir_logo='$logogrupo' where id_usuario='$id_usuariof'");
+                $quero = mysqli_query($conexion, "update gruposinv set dir_logo='$logogrupo' where id_usuario='$id_usuariol'");
                 mysqli_query($conexion, $query);
                 //El archivo se subió correctamente;
                 include "scripts/subido_exitosamente.php";

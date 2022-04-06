@@ -34,7 +34,7 @@ if ($checarSiImagen != false) {
         //echo "El archivo tiene que ser menor a 1.5 mb";
     } else {
         //validar tipo de imagen
-        if ($tipoArchivo == "jpg" || $tipoArchivo == "jpeg" || $tipoArchivo == "png") {
+        if ($tipoArchivo == "jpg" || $tipoArchivo == "jpeg") {
             //Se validó que la extensión del archivo sean jpg, jepg y png.
             if (move_uploaded_file($_FILES["file"]["tmp_name"], "foto_grupos/$id_grupo/" . $_FILES["file"]["name"])) {
                 $query = "INSERT INTO fotogrupo (id_usuariof,id_grupo,dir_foto) VALUES('$id_usuariof','$id_grupo','$fotogrupo')";

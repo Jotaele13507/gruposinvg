@@ -65,6 +65,15 @@ if ($number_of_rows == 1) { // Comparamos el resultado de nuestra consulta.
                 <span class="contact100-form-title">
                     <center>SUBIR FOTO DE GRUPO
                 </span>
+                <br><br>
+                <div class="product-info text-left">
+                    <h3 class="name">Instrucciones</h3>
+                    <p>
+                        1. Solo se admite archivos con extensión tipo .jpg o .jepg<br>
+                        2. El tamaño maximo del archivo debe ser de 1.5 mb.<br>
+                    </p>
+                    <br>
+                </div><!-- /.product-info -->
                 <input type="file" name="file">
                 <br>
                 <div class="container-contact100-form-btn">
